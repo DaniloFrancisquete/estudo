@@ -10,7 +10,12 @@ import {FaTrash} from 'react-icons/fa'
 
 import{db} from '../services/firebaseConnection'
 
-import{addDoc,query, collection,orderBy,where,onSnapshot} from 'firebase/firestore'
+import{addDoc,query, collection,orderBy,where,onSnapshot,doc,
+    deleteDoc
+} from 'firebase/firestore'
+
+import Link from 'next/link'
+
 
 interface HomeProps {
     user: {
@@ -85,6 +90,19 @@ setPublicTask(false);
 }
 
 }
+
+async function handleShare(id: string){
+ await navigator.clipboard.writeText(
+    `${process.env.NEXT_PUBLIC_URL}/task/${id}`
+ )
+}
+
+async function handleDeleteTack(id: string) {
+const docRef = doc(db,"tarefas",id)
+await deleteDoc(docRef)
+
+}
+
     return (
         <div className={style.container}>
             <Head>
@@ -130,15 +148,24 @@ setPublicTask(false);
                           {item.public && (
                           <div className={style.tagContainer}>
                               <label className={style.tag}>PUBLICO</label>
-                              <button className={style.shareButton}><FiShare2 
+                              <button className={style.shareButton} onClick={() => handleShare(item.id)}>
+                                <FiShare2 
                               size={22}
                               color="#3183ff"/>
                               </button>
                           </div>)}
 
                           <div className={style.taskContent}>
-                              <p>{item.tarefa}</p>
-                              <button className={style.trashButton}>
+                            
+                              {item.public ? (
+                                <Link href={`/task/${item.id}`}>
+                                <p>{item.tarefa}</p>
+                                </Link>
+                              ) : (
+                                <p>{item.tarefa}</p>
+                              )}
+
+                              <button className={style.trashButton} onClick={() => handleDeleteTack(item.id)}>
                               <FaTrash size={24} color="#ea3140" />
                               </button>
                           </div>
