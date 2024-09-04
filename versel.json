@@ -1,23 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "next.config.js",
-        "use": "@vercel/next"
-      }
-    ],
-    "rewrites": [
-      {
-        "source": "/api/:path*",
-        "destination": "/api/:path*"
-      }
-    ],
-    "env": {
-      "NEXT_PUBLIC_URL": "https://seu-site.vercel.app",
-      "GOOGLE_CLIENT_ID": "your-google-client-id",
-      "GOOGLE_CLIENT_SECRET": "your-google-client-secret",
-      "NEXTAUTH_URL": "https://seu-site.vercel.app",
-      "JWT_SECRET": "your-jwt-secret"
+  "version": 2,
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_URL": "https://seu-site.vercel.app",
+    "GOOGLE_CLIENT_ID": "your-google-client-id",
+    "GOOGLE_CLIENT_SECRET": "your-google-client-secret",
+    "NEXTAUTH_URL": "https://seu-site.vercel.app",
+    "JWT_SECRET": "your-jwt-secret"
   }
-  
+}
