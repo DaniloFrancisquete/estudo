@@ -4,7 +4,7 @@ import Head from "next/head";
 import style from './style.module.css'
 import { GetServerSideProps } from "next";
 
-import {db} from '../../pages/services/firebaseConnection'
+import {db} from '../../services/firebaseConnection'
 import {
     doc,
     collection,

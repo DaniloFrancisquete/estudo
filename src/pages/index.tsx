@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import Image from "next/image";
 import heroImg from "../../public/assets/hero.png";
-import{db} from '../pages/services/firebaseConnection'
+import{db} from '../services/firebaseConnection'
 
 import {collection, getDocs} from 'firebase/firestore'
 

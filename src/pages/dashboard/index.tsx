@@ -8,7 +8,7 @@ import {Textarea} from "../../components/textarea";
 import {FiShare2} from 'react-icons/fi'
 import {FaTrash} from 'react-icons/fa'
 
-import{db} from '../services/firebaseConnection'
+import{db} from '../../services/firebaseConnection'
 
 import{addDoc,query, collection,orderBy,where,onSnapshot,doc,
     deleteDoc
